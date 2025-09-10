@@ -2,6 +2,9 @@ package org.example;
 
 import org.example.elevator.Elevator;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -15,6 +18,20 @@ public class Main {
             // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
             System.out.println("i = " + i);
         }
+        ArrayList<Integer> floors = new ArrayList<>();
+
         Elevator elevator = new Elevator(5, 0);
+        elevator.requestElevator(3);
+        floors.add(2);
+        floors.add(0);
+        elevator.selectDestinationFloors(floors);
+        floors.remove(0);
+        floors.remove(0);
+        System.out.println(String.valueOf(elevator.getCurrentFloor()) + '-' + elevator.getState() + '\n');
+        elevator.requestElevator(1);
+        floors.add(3);
+        floors.add(4);
+        elevator.selectDestinationFloors(floors);
+        System.out.println(String.valueOf(elevator.getCurrentFloor()) + '-' + elevator.getState()+ '\n');
     }
 }
