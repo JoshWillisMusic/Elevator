@@ -18,6 +18,9 @@ public class Elevator {
         this.currentFloor = currentFloor;
         this.totalFloors = totalFloors;
     }
+    public int getTotalFloors(){
+        return this.totalFloors;
+    }
 
     public int getCurrentFloor(){
         return this.currentFloor;
