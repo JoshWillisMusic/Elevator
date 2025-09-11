@@ -1,16 +1,23 @@
-package org.example.elevator;
+package org.example.elevator.model;
 
 enum DoorState {
     OPEN, OPENING, CLOSED, CLOSING
 }
 
- final class Door {
+final class Door {
     private DoorState state = DoorState.CLOSED;
 
-    public DoorState state() { return state; }
+    public DoorState state() {
+        return state;
+    }
 
-    public boolean isOpen()    { return state == DoorState.OPEN; }
-    public boolean isClosed()  { return state == DoorState.CLOSED; }
+    public boolean isOpen() {
+        return state == DoorState.OPEN;
+    }
+
+    public boolean isClosed() {
+        return state == DoorState.CLOSED;
+    }
 
     public void open() {
         if (state == DoorState.OPEN || state == DoorState.OPENING) return;
