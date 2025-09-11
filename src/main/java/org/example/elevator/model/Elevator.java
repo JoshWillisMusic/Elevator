@@ -33,11 +33,14 @@ public class Elevator {
         if (this.door.isOpen())
             this.door.close();
         this.state = ElevatorState.MOVING;
+        System.out.println("Moving Elevator from " + current + " to " + target);
         for (int i = current; i <= target; i++) {
             //Add delay for moving
             this.currentFloor = i;
+            System.out.println("Current Floor - " + this.currentFloor);
         }
         this.state = ElevatorState.AT_FLOOR;
+        System.out.println("Elevator at Floor - " + this.currentFloor);
         this.door.open();
         return true;
     }
@@ -46,9 +49,11 @@ public class Elevator {
         if (this.door.isOpen())
             this.door.close();
         this.state = ElevatorState.MOVING;
+        System.out.println("Moving Elevator from " + current + " to " + target);
         for (int i = current; i >= target; i--) {
             //Add delay for moving
             this.currentFloor = i;
+            System.out.println("Current Floor - " + this.currentFloor);
         }
         this.state = ElevatorState.AT_FLOOR;
         this.door.open();
@@ -58,6 +63,7 @@ public class Elevator {
     // Commands on a specific level that trigger elevator
     // To-Do add request up and request down for multi-elevator problem
     public boolean requestElevator(int requestFloor) {
+        System.out.println("Requesting Elevator to go to floor - " + requestFloor);
         if (requestFloor > this.totalFloors || requestFloor < 0)
             return false;
         if (this.currentFloor != requestFloor) {
@@ -69,7 +75,7 @@ public class Elevator {
             }
         }
         this.door.open();
-        //wait for floors selection
+        System.out.println("Elevator is waiting for floors selection");
         this.state = ElevatorState.WAITING;
         return true;
     }
@@ -82,10 +88,8 @@ public class Elevator {
                 System.out.println("Invalid Floor");
             } else if (floor > this.currentFloor) {
                 elevatorUp(this.currentFloor, floor);
-                System.out.println("stopping at - " + this.currentFloor);
             } else {
                 elevatorDown(this.currentFloor, floor);
-                System.out.println("stopping at - " + this.currentFloor);
             }
         }
         this.door.close();
