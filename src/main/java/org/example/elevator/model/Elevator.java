@@ -7,14 +7,22 @@ enum ElevatorState {IDLE, PREPARE_UP, PREPARE_DOWN, WAITING, MOVING, STOPPING, A
 
 
 public class Elevator {
+    private static Elevator instance;
     private final Door door = new Door();
     private int currentFloor = 0;
     private int totalFloors = 0;
     private ElevatorState state = ElevatorState.IDLE;
 
-    public Elevator(int totalFloors, int currentFloor) {
+    private Elevator(int totalFloors, int currentFloor) {
         this.currentFloor = currentFloor;
         this.totalFloors = totalFloors;
+    }
+
+    public static synchronized Elevator getInstance() {
+        if (instance == null) {
+            instance = new Elevator(10, 0);
+        }
+        return instance;
     }
 
     public int getTotalFloors() {
@@ -29,7 +37,7 @@ public class Elevator {
         return state.name();
     }
 
-    public boolean elevatorUp(int current, int target) {
+    private void elevatorMove(int current, int target) {
         if (this.door.isOpen())
             this.door.close();
         this.state = ElevatorState.MOVING;
@@ -42,22 +50,16 @@ public class Elevator {
         this.state = ElevatorState.AT_FLOOR;
         System.out.println("Elevator at Floor - " + this.currentFloor);
         this.door.open();
-        return true;
     }
 
-    public boolean elevatorDown(int current, int target) {
-        if (this.door.isOpen())
-            this.door.close();
-        this.state = ElevatorState.MOVING;
-        System.out.println("Moving Elevator from " + current + " to " + target);
-        for (int i = current; i >= target; i--) {
-            //Add delay for moving
-            this.currentFloor = i;
-            System.out.println("Current Floor - " + this.currentFloor);
-        }
-        this.state = ElevatorState.AT_FLOOR;
-        this.door.open();
-        return true;
+    private void elevatorUp(int current, int target) {
+        this.state = ElevatorState.PREPARE_UP;
+        elevatorMove(current, target);
+    }
+
+    private void elevatorDown(int current, int target) {
+        this.state = ElevatorState.PREPARE_DOWN;
+        elevatorMove(current, target);
     }
 
     // Commands on a specific level that trigger elevator

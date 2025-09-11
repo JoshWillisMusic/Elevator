@@ -11,7 +11,7 @@ public class ElevatorService {
 
     public ElevatorService() {
         // Initialize one elevator for this example
-        this.elevator = new Elevator(10, 0);
+        this.elevator = Elevator.getInstance();
     }
 
     public Elevator getElevatorStatus() {
