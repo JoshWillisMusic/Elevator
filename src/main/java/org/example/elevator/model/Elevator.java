@@ -43,7 +43,7 @@ public class Elevator {
         this.state = ElevatorState.MOVING;
         System.out.println("Moving Elevator from " + current + " to " + target);
         for (int i = current; i <= target; i++) {
-            //Add delay for moving
+            //TODO Add delay for moving
             this.currentFloor = i;
             System.out.println("Current Floor - " + this.currentFloor);
         }

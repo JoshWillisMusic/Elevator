@@ -24,7 +24,7 @@ echo -e "\n\nA user requests the elevator on floor 2"
 curl -s -X POST "http://elevator:8080/api/request" \
   -H "Content-Type: application/json" \
   -H "Accept: application/json" \
-  -d '{"requestFloor": 5}'
+  -d '{"requestFloor": 2}'
 
  echo -e "\n\nThe user Steps in the elevator and selects floors 7"
  curl -s -X POST "http://elevator:8080/api/select_floors" \
