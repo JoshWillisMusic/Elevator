@@ -70,6 +70,7 @@ There are 10 floors - this could be changed to be configurable
 There are no time delays for door opening or closing, or time delays for the elevator to move to a floor
 Currently, the elevator will move to the requested floor and won't stop for elevator requests along the way
 Elevator requests are processed right as they are received.
+Elevator index starts at 0, would want this to be 1 in a UI
 
 ## Additional Features
 
