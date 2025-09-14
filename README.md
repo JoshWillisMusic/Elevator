@@ -65,15 +65,15 @@ Started with these state machines as a reference:
 https://www.researchgate.net/figure/Finite-State-Machine-of-an-Elevator-Controller_fig9_220299137
 https://www.researchgate.net/figure/A-Timed-State-Machine-for-an-elevator-door_fig41_289154019
 
-There is only one elevator for now - Singleton
-There are 10 floors - this could be changed to be configurable
-There are no time delays for door opening or closing, or time delays for the elevator to move to a floor
-Currently, the elevator will move to the requested floor and won't stop for elevator requests along the way
-Elevator requests are processed right as they are received.
-Elevator index starts at 0, would want this to be 1 in a UI
+- There is only one elevator for now - Singleton
+- There are 10 floors - this could be changed to be configurable
+- There are no time delays for door opening or closing, or time delays for the elevator to move to a floor
+- Currently, the elevator will move to the requested floor and won't stop for elevator requests along the way
+- Elevator requests are processed right as they are received.
+- Elevator index starts at 0, would want this to be 1 in a UI
 
 ## Additional Features
 
-Make the elevator a runnable and poll for requests added to a queue
-once a request is added to the queue, the elevator should process that request in the order it is received
-if the elevator moving and it passes a floor where there is a request it should stop and let the user at that floor in
+- Make the elevator a runnable and poll for requests added to a queue
+- once a request is added to the queue, the elevator should process that request in the order it is received
+- if the elevator moving and it passes a floor where there is a request it should stop and let the user at that floor in
